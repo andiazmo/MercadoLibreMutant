@@ -23,7 +23,7 @@ POST, que tenga como body un JSON con la siguiente estructura:
 "dna":["ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"]
 }
 + Lanzar la petición el sistema devuelve un HTTP 200 OK, para las matrices que cumplan con las validaciones
-(cuadradas, con caracteres 'A,T,G,C') y con una secuencia de de cuatro letras iguales.
+(cuadradas, con caracteres 'A,T,G,C') y con una secuencia de cuatro letras iguales.
 
 +De lo contrario el sistema devuelve un HTTP 403-Forbidden
 
