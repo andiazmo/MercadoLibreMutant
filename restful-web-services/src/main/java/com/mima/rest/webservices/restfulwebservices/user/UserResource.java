@@ -20,6 +20,8 @@ public class UserResource {
 	@Autowired
 	private UserDaoService service;
 	
+	private boolean result;
+	
 	@GetMapping("/users")
 	public List<User> retrieveAllUsers() {
 		return service.findAll();
@@ -48,38 +50,33 @@ public class UserResource {
 	}
 	
 	@PostMapping("/mutant/")
-	public void isMutant(String[] dna) {
-		//Saber el tamaño del arreglo
-		//Saber el tamaño del String
-		//Crear areglo apartir de los valores encontrados
-		//agregar los string a el arreglo
-		int sizeArr = dna.length;
-		char[] arrDna = new char[sizeArr*sizeArr];
+	public boolean isMutant(@RequestBody Dna dna) {
+		System.out.println("Entro al metodo:::");
+		String[] arrDna = dna.getDna();
+		boolean resultBack = false;
+		System.out.println("arrDna:::"+arrDna.length);
+		resultBack = this.service.isMutant(arrDna);
 		
-		for(int i = 0; i < arrDna.length; i++ ) {
-			for(int j = 0; j < sizeArr; j++) {
-				//arrDna[i] = 
-			}
+		System.out.println("ResultBack:::"+resultBack);
+		
+		if(!resultBack)
+			throw new DnaException("");
 			
+		
+		else {
+			System.out.println("resultBack:::"+resultBack);
+			//return resultBack;
 		}
-		
-		
-		
-		
+		System.out.println("ResultBack:::"+resultBack);
+		return resultBack;
+			
 	}
 	
-	public static void bubbleSort(int[] arr){
-		int n = arr.length;
-		
-		for(int i=0; i<n-1; i++){
-			for(int j=1; j<n; j++){
-				if(arr[i] > arr[j]) {
-					int max = arr[i];
-					arr[i] =  arr[j];
-					arr[j] = max;
-				}
-			}
-		}
-		
+	public boolean isResult() {
+		return result;
+	}
+
+	public void setResult(boolean result) {
+		this.result = result;
 	}
 }

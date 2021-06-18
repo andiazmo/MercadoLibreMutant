@@ -15,14 +15,25 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class CustomizedResponseEntityExceptionHandler 
 extends ResponseEntityExceptionHandler{
 	
+//	@ExceptionHandler(Exception.class)
+//	public final ResponseEntity<Object> handleUserNotFoundException
+//	(Exception ex, WebRequest request){
+//		
+//		ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),
+//				request.getDescription(false));
+//		
+//		return new ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND);
+//		
+//	}
+	
 	@ExceptionHandler(Exception.class)
-	public final ResponseEntity<Object> handleUserNotFoundException
+	public final ResponseEntity<Object> handleDnaException
 	(Exception ex, WebRequest request){
 		
 		ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(),
 				request.getDescription(false));
 		
-		return new ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND);
+		return new ResponseEntity(exceptionResponse, HttpStatus.FORBIDDEN);
 		
 	}
 
